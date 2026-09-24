@@ -1,0 +1,227 @@
+{
+  "landingChips": {
+    "industries": [
+      {
+        "value": "閥門／流體控制設備",
+        "count": 115
+      },
+      {
+        "value": "液化天然氣(LNG)",
+        "count": 28
+      },
+      {
+        "value": "石化／化工",
+        "count": 26
+      },
+      {
+        "value": "半導體／電子",
+        "count": 21
+      },
+      {
+        "value": "資料中心／AI",
+        "count": 17
+      },
+      {
+        "value": "工程／EPC承包",
+        "count": 16
+      },
+      {
+        "value": "電力／公用事業",
+        "count": 15
+      },
+      {
+        "value": "再生能源",
+        "count": 14
+      },
+      {
+        "value": "石油／原油",
+        "count": 13
+      },
+      {
+        "value": "汽車／運輸物流",
+        "count": 6
+      },
+      {
+        "value": "海事／船舶",
+        "count": 4
+      },
+      {
+        "value": "鋼鐵／金屬加工",
+        "count": 1
+      }
+    ],
+    "events": [
+      {
+        "value": "新產品",
+        "count": 21
+      },
+      {
+        "value": "收購",
+        "count": 19
+      },
+      {
+        "value": "專案得標",
+        "count": 15
+      },
+      {
+        "value": "合作",
+        "count": 14
+      },
+      {
+        "value": "法規政策",
+        "count": 12
+      },
+      {
+        "value": "擴產",
+        "count": 12
+      },
+      {
+        "value": "財報",
+        "count": 5
+      },
+      {
+        "value": "市場趨勢分析",
+        "count": 4
+      },
+      {
+        "value": "技術創新",
+        "count": 3
+      },
+      {
+        "value": "人事異動",
+        "count": 2
+      },
+      {
+        "value": "展覽活動",
+        "count": 1
+      }
+    ],
+    "companies": [
+      {
+        "value": "中油",
+        "count": 16
+      },
+      {
+        "value": "台塑",
+        "count": 9
+      },
+      {
+        "value": "台電",
+        "count": 9
+      },
+      {
+        "value": "台積電",
+        "count": 6
+      },
+      {
+        "value": "Emerson",
+        "count": 6
+      },
+      {
+        "value": "台塑新智能",
+        "count": 5
+      },
+      {
+        "value": "Baker Hughes",
+        "count": 5
+      },
+      {
+        "value": "台化",
+        "count": 4
+      },
+      {
+        "value": "台塑化",
+        "count": 4
+      },
+      {
+        "value": "南亞",
+        "count": 4
+      },
+      {
+        "value": "Google",
+        "count": 4
+      },
+      {
+        "value": "Rotork",
+        "count": 4
+      },
+      {
+        "value": "Technip Energies",
+        "count": 4
+      },
+      {
+        "value": "中鋼",
+        "count": 3
+      },
+      {
+        "value": "輝達",
+        "count": 3
+      },
+      {
+        "value": "Crane Company",
+        "count": 3
+      }
+    ],
+    "sites": [
+      {
+        "value": "Valve World",
+        "count": 32
+      },
+      {
+        "value": "工商時報",
+        "count": 28
+      },
+      {
+        "value": "經濟日報",
+        "count": 18
+      },
+      {
+        "value": "TechNews 科技新報",
+        "count": 16
+      },
+      {
+        "value": "Hydrocarbon Engineering",
+        "count": 15
+      },
+      {
+        "value": "Valve Magazine",
+        "count": 5
+      },
+      {
+        "value": "LNG Industry",
+        "count": 4
+      },
+      {
+        "value": "Pumps & Systems",
+        "count": 3
+      }
+    ]
+  },
+  "indLng": 28,
+  "coTaipowerCnpcEvAwarded": 0,
+  "keywordLengNengAllStatusesIds": [
+    "20260918-08",
+    "20260918-15",
+    "20260918-17",
+    "20260918-18"
+  ],
+  "statusCountsAllRecords": [
+    {
+      "value": "Rejected",
+      "count": 241
+    },
+    {
+      "value": "Approved",
+      "count": 121
+    },
+    {
+      "value": "Archived",
+      "count": 97
+    },
+    {
+      "value": "Duplicate",
+      "count": 7
+    }
+  ],
+  "dateRangeSep1To10": 8
+}
