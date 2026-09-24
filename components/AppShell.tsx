@@ -2,7 +2,7 @@
 
 import { Suspense } from "react";
 import { usePathname } from "next/navigation";
-import { TopBar } from "./TopBar";
+import { Header } from "./Header";
 
 // data-mobile-search lets globals.css bump --header-h to ~112px, but only
 // under the 640px breakpoint (see the media query there) — on desktop the
@@ -32,7 +32,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   return (
     <div data-mobile-search={showMobileSearch}>
       <Suspense fallback={null}>
-        <TopBar />
+        <Header />
       </Suspense>
       <main id="app">{children}</main>
     </div>

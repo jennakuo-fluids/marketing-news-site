@@ -127,7 +127,7 @@ export function FilterControls({ current, counts }: Props) {
 
         {hasActive && (
           <div className="barrow">
-            <span style={{ color: "var(--muted)", fontSize: 13 }}>已套用</span>
+            <span style={{ color: "var(--text-muted)", fontSize: 13 }}>已套用</span>
             {current.q && (
               <span className="pill">
                 「{current.q}」

@@ -41,30 +41,16 @@ export default async function SignInPage({ searchParams }: SignInPageProps) {
   return (
     <main className="signin-page">
       <div className="signin-card">
-        <h1>富迪斯 產業新聞庫</h1>
+        <img src="/logo-fluids.png" alt="富迪斯" className="signin-logo logo-light" />
+        <img src="/logo-fluids-dark.png" alt="富迪斯" className="signin-logo logo-dark" />
+        <h1>產業新聞庫</h1>
         <p>請輸入密碼以繼續</p>
         {wrongPassword && <div className="signin-error">密碼錯誤，請再試一次。</div>}
         <form action={action}>
           <label htmlFor="password" className="visually-hidden">
             密碼
           </label>
-          <input
-            id="password"
-            name="password"
-            type="password"
-            required
-            autoFocus
-            style={{
-              width: "100%",
-              height: 44,
-              marginBottom: 16,
-              border: "1px solid var(--border2)",
-              borderRadius: 8,
-              padding: "0 12px",
-              background: "var(--bg)",
-              color: "var(--text)",
-            }}
-          />
+          <input id="password" name="password" type="password" required autoFocus className="signin-input" />
           <button type="submit" className="signin-btn">
             登入
           </button>

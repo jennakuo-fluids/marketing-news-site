@@ -50,20 +50,20 @@ function getRaw(sp: RawSearchParams, key: string): string {
   return v ?? "";
 }
 
-function splitPipe(raw: string): string[] {
+function splitList(raw: string): string[] {
   return raw
-    .split("|")
+    .split(",")
     .map((v) => v.trim())
     .filter(Boolean);
 }
 
 export function parseParams(sp: RawSearchParams): ParsedParams {
   const q = getRaw(sp, "q").trim();
-  const ind = splitPipe(getRaw(sp, "ind"));
-  const ev = splitPipe(getRaw(sp, "ev"));
-  const co = splitPipe(getRaw(sp, "co"));
-  const site = splitPipe(getRaw(sp, "site"));
-  const st = splitPipe(getRaw(sp, "st"));
+  const ind = splitList(getRaw(sp, "ind"));
+  const ev = splitList(getRaw(sp, "ev"));
+  const co = splitList(getRaw(sp, "co"));
+  const site = splitList(getRaw(sp, "site"));
+  const st = splitList(getRaw(sp, "st"));
   const fromRaw = getRaw(sp, "from");
   const toRaw = getRaw(sp, "to");
   const from = isValidDateKey(fromRaw) ? fromRaw : "";
@@ -76,11 +76,11 @@ export function parseParams(sp: RawSearchParams): ParsedParams {
 export function toSearchParams(params: Partial<ParsedParams>): URLSearchParams {
   const sp = new URLSearchParams();
   if (params.q) sp.set("q", params.q);
-  if (params.ind?.length) sp.set("ind", params.ind.join("|"));
-  if (params.ev?.length) sp.set("ev", params.ev.join("|"));
-  if (params.co?.length) sp.set("co", params.co.join("|"));
-  if (params.site?.length) sp.set("site", params.site.join("|"));
-  if (params.st?.length) sp.set("st", params.st.join("|"));
+  if (params.ind?.length) sp.set("ind", params.ind.join(","));
+  if (params.ev?.length) sp.set("ev", params.ev.join(","));
+  if (params.co?.length) sp.set("co", params.co.join(","));
+  if (params.site?.length) sp.set("site", params.site.join(","));
+  if (params.st?.length) sp.set("st", params.st.join(","));
   if (params.from) sp.set("from", params.from);
   if (params.to) sp.set("to", params.to);
   if (params.page && params.page > 1) sp.set("page", String(params.page));

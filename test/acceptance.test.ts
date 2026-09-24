@@ -37,20 +37,20 @@ describe("acceptance: specific filter combinations", () => {
     expect(result.length).toBe(expected.indLng);
   });
 
-  it("co=中油|台電&ev=專案得標 count matches", () => {
-    const result = filterRecords(records, parseParams(new URLSearchParams("co=中油|台電&ev=專案得標")));
+  it("co=中油,台電&ev=專案得標 count matches", () => {
+    const result = filterRecords(records, parseParams(new URLSearchParams("co=中油,台電&ev=專案得標")));
     expect(result.length).toBe(expected.coTaipowerCnpcEvAwarded);
   });
 
   it("keyword 冷能 across all statuses returns the expected ID list, including tag-only matches", () => {
     const result = filterRecords(
       records,
-      parseParams(new URLSearchParams("q=冷能&st=Approved|Rejected|Archived|Duplicate"))
+      parseParams(new URLSearchParams("q=冷能&st=Approved,Rejected,Archived,Duplicate"))
     );
     expect(result.map((r) => r.id).sort()).toEqual(expected.keywordLengNengAllStatusesIds);
   });
 
-  it("st=Approved|Rejected|Archived|Duplicate gives the unfiltered all-record status counts", () => {
+  it("st=Approved,Rejected,Archived,Duplicate gives the unfiltered all-record status counts", () => {
     const counts = getCounts(records, ["Approved", "Rejected", "Archived", "Duplicate"]);
     expect(counts.statuses).toEqual(expected.statusCountsAllRecords);
   });

@@ -67,7 +67,7 @@ describe("filterRecords", () => {
     ];
     const result = filterRecords(
       records,
-      parseParams(new URLSearchParams("co=台電|中油&ind=電力"))
+      parseParams(new URLSearchParams("co=台電,中油&ind=電力"))
     );
     // co is OR'd (either matches all 4), AND'd with ind=電力 -> only 1 and 2
     expect(result.map((r) => r.id).sort()).toEqual(["1", "2"]);
@@ -230,6 +230,29 @@ describe("parseParams <-> toSearchParams round trip", () => {
     expect(parsed.page).toBe(1);
     expect(parsed.from).toBe("");
     expect(parsed.to).toBe(""); // 2026-13-99 matches the shape but is left to filtering to ignore
+  });
+});
+
+describe("multi-select filters are comma-separated in the URL", () => {
+  it("parses a comma-separated field into multiple values", () => {
+    const params = parseParams(new URLSearchParams("ind=電力,石化,LNG"));
+    expect(params.ind).toEqual(["電力", "石化", "LNG"]);
+  });
+
+  it("serializes multiple values joined by commas, not pipes", () => {
+    const sp = toSearchParams({ co: ["台電", "中油"] });
+    expect(sp.get("co")).toBe("台電,中油");
+  });
+
+  it("toggling a value on then off returns to the original selection (URL round trip)", () => {
+    const empty = parseParams(new URLSearchParams());
+    const withValue = parseParams(buildFilterUrl(empty, { ind: [...empty.ind, "電力"] }));
+    expect(withValue.ind).toEqual(["電力"]);
+
+    const toggledOff = parseParams(
+      buildFilterUrl(withValue, { ind: withValue.ind.filter((v) => v !== "電力") })
+    );
+    expect(toggledOff.ind).toEqual([]);
   });
 });
 

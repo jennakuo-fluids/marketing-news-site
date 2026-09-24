@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { Tag, TagList } from "@/components/TagList";
 import { NewsRecord } from "@/lib/types";
-import { statusLabel } from "@/lib/news";
+import { ParsedParams, statusLabel } from "@/lib/news";
 
-export function ResultCard({ record }: { record: NewsRecord }) {
+type Props = { record: NewsRecord; current: ParsedParams };
+
+export function ResultCard({ record, current }: Props) {
   const tags: Tag[] = [
     ...record.companies.slice(0, 2).map((value): Tag => ({ field: "co", value })),
     ...record.industries.slice(0, 2).map((value): Tag => ({ field: "ind", value })),
@@ -23,7 +25,7 @@ export function ResultCard({ record }: { record: NewsRecord }) {
         <span>{record.site}</span>
         {record.status !== "Approved" && <span className="stat">{statusLabel(record.status)}</span>}
       </div>
-      <TagList tags={tags} />
+      <TagList tags={tags} current={current} />
       {snippet && <p className="snip">{snippet}</p>}
     </article>
   );

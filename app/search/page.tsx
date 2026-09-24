@@ -38,7 +38,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
         ) : (
           <div className="list">
             {items.map((r) => (
-              <ResultCard key={r.id} record={r} />
+              <ResultCard key={r.id} record={r} current={params} />
             ))}
           </div>
         )}
