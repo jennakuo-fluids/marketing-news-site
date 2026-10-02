@@ -27,9 +27,9 @@ export function LandingContent({ records }: { records: NewsRecord[] }) {
         </div>
       </section>
 
-      <ChipSection label="依產業" field="ind" chips={topChips(counts.industries, 12)} />
-      <ChipSection label="依事件類型" field="ev" chips={topChips(counts.events, 14)} />
-      <ChipSection label="依公司" field="co" chips={topChips(counts.companies, 16)} />
+      <ChipSection label="依產業" field="ind" chips={topChips(counts.industries, 999)} />
+      <ChipSection label="依事件類型" field="ev" chips={topChips(counts.events, 999)} />
+      <ChipSection label="依公司" field="co" chips={topChips(counts.companies, 999)} />
       <ChipSection label="依來源" field="site" chips={topChips(counts.sites, 999)} />
     </>
   );

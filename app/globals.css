@@ -129,6 +129,7 @@ section.grp { padding: 26px 0 0; }
 h2.lbl { margin: 0 0 12px; font-size: 13px; font-weight: 700; color: var(--text-muted); letter-spacing: 2px; }
 .chips { display: flex; flex-wrap: wrap; gap: 9px; }
 .chip { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px; border: 1px solid var(--input-border); border-radius: 999px; background: var(--bg-surface); color: var(--text); text-decoration: none; font-size: 15px; cursor: pointer; }
+.chipmore { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border: 1px dashed var(--input-border); border-radius: 999px; background: transparent; color: var(--text-muted); font-size: 15px; cursor: pointer; }
 .chip .n { font-size: 13px; font-weight: 700; color: var(--accent); }
 .chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-contrast); font-weight: 700; }
 .chip[aria-pressed="true"] .n { color: var(--accent-contrast); }
@@ -168,7 +169,7 @@ h2.lbl { margin: 0 0 12px; font-size: 13px; font-weight: 700; color: var(--text-
 .card .t { font-size: 18px; font-weight: 700; line-height: 1.5; color: var(--text); text-decoration: none; }
 .card .t:hover { color: var(--accent); }
 .card .en { margin: 0; font-size: 13px; color: var(--text-muted); }
-.card .m { display: flex; align-items: center; gap: 9px; font-size: 13px; color: var(--text-muted); flex-wrap: wrap; }
+.card .m, .detail .m { display: flex; align-items: center; gap: 9px; font-size: 13px; color: var(--text-muted); flex-wrap: wrap; }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .tag { display: inline-flex; align-items: center; height: 26px; padding: 0 10px; border-radius: 6px; background: var(--accent-bg); color: var(--accent); font-size: 13px; border: 0; cursor: pointer; text-decoration: none; }
 .tag[aria-pressed="true"] { background: var(--accent); color: var(--accent-contrast); font-weight: 700; }

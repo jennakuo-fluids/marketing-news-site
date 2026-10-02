@@ -37,6 +37,7 @@ type Props = {
 export function FilterControls({ current, counts }: Props) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
+  const barRef = useRef<HTMLDivElement | null>(null);
   const groupRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
   useEffect(() => {
@@ -46,6 +47,23 @@ export function FilterControls({ current, counts }: Props) {
       // sessionStorage unavailable — panel just starts closed.
     }
   }, []);
+
+  // Click anywhere outside the filter bar/panel closes the panel.
+  useEffect(() => {
+    if (!open) return;
+    function onDown(e: MouseEvent) {
+      if (barRef.current && !barRef.current.contains(e.target as Node)) {
+        setOpen(false);
+        try {
+          sessionStorage.setItem(PANEL_STORAGE_KEY, "0");
+        } catch {
+          // ignore
+        }
+      }
+    }
+    document.addEventListener("mousedown", onDown);
+    return () => document.removeEventListener("mousedown", onDown);
+  }, [open]);
 
   function setOpenPersist(next: boolean) {
     setOpen(next);
@@ -94,7 +112,7 @@ export function FilterControls({ current, counts }: Props) {
     Boolean(current.to);
 
   return (
-    <div className="bar">
+    <div className="bar" ref={barRef}>
       <div className="wrap barin">
         <div className="barrow">
           <button type="button" className="ghost" aria-pressed={open} onClick={() => setOpenPersist(!open)}>
