@@ -24,10 +24,10 @@ type RawRagicRecord = Record<string, unknown>;
 function ragicConfig() {
   const baseUrl = process.env.RAGIC_BASE_URL;
   const sheetPath = process.env.RAGIC_SHEET_PATH;
-  const apiKey = process.env.RAGIC_API_KEY;
+  const apiKey = process.env.NEWS_RAGIC_API_KEY;
   if (!baseUrl || !sheetPath || !apiKey) {
     throw new Error(
-      "Missing RAGIC_BASE_URL, RAGIC_SHEET_PATH or RAGIC_API_KEY env var. See .env.local.example."
+      "Missing RAGIC_BASE_URL, RAGIC_SHEET_PATH or NEWS_RAGIC_API_KEY env var. See .env.local.example."
     );
   }
   return { baseUrl, sheetPath, apiKey };
@@ -53,8 +53,14 @@ async function fetchPage(offset: number, limit: number): Promise<RawRagicRecord[
     throw new Error(`Ragic request failed: ${res.status} ${res.statusText}`);
   }
 
-  const body = (await res.json()) as Record<string, RawRagicRecord>;
-  return Object.values(body);
+  // Ragic reports errors (bad key, no access to the sheet) as HTTP 200 with a
+  // {"status":"ERROR","msg":...,"code":...} body. Throw so the bad response
+  // is never cached as records and the last-good fallback kicks in.
+  const body = (await res.json()) as Record<string, unknown>;
+  if (body.status === "ERROR") {
+    throw new Error(`Ragic error ${String(body.code)}: ${String(body.msg)}`);
+  }
+  return Object.values(body as Record<string, RawRagicRecord>);
 }
 
 function str(v: unknown): string {
