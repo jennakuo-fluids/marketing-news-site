@@ -26,9 +26,14 @@ function ragicConfig() {
   const sheetPath = process.env.RAGIC_SHEET_PATH;
   const apiKey = process.env.NEWS_RAGIC_API_KEY;
   if (!baseUrl || !sheetPath || !apiKey) {
-    throw new Error(
-      "Missing RAGIC_BASE_URL, RAGIC_SHEET_PATH or NEWS_RAGIC_API_KEY env var. See .env.local.example."
-    );
+    const missing = Object.entries({
+      RAGIC_BASE_URL: baseUrl,
+      RAGIC_SHEET_PATH: sheetPath,
+      NEWS_RAGIC_API_KEY: apiKey,
+    })
+      .filter(([, v]) => !v)
+      .map(([k]) => k);
+    throw new Error(`Missing env var(s): ${missing.join(", ")}. See .env.local.example.`);
   }
   return { baseUrl, sheetPath, apiKey };
 }
